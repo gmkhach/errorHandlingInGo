@@ -7,6 +7,12 @@ import (
 	"math"
 )
 
+type product struct {
+	category	string
+	sn			string
+	err			error
+}
+
 func main() {
 	_, err := sqrt(-1)
 	if err != nil {
@@ -17,6 +23,17 @@ func main() {
 	if err != nil {
 		log.Println(err)
 	}
+
+	_, err = getProduct(true) 
+	if err != nil {
+		log.Println(err)
+	}
+}
+
+// By adding this Error() method to the type product the type product implicitly becomes of type error also.
+// Therefore, it can be passed and run as an error.
+func (p product) Error() string {
+	return fmt.Sprintf("There is an error with this product: %v %v %v", p.category, p.sn, p.err)
 }
 
 func sqrt(n float64) (float64, error) {
@@ -36,4 +53,11 @@ func devide(n1 float64, n2 float64) (float64, error) {
 		return math.NaN(), fmt.Errorf("Error: can't devide over zero.")
 	}
 	return n1 / n2, nil
+}
+
+func getProduct(isDefective bool) (product, error) {
+	if isDefective {
+		return product{}, product{"electronic good", "235ab7xd", errors.New("This product is defective")}
+	}
+	return product{"electronic good", "235ab7xd", nil}, nil
 }
