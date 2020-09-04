@@ -52,7 +52,7 @@ func main() {
 	io.Copy(file, reader)
 
 	// Now let's take a look at another build-in reader
-	file, err = os.Open("greetings.txt")
+	file, err = os.Open("greatings.txt")
 	if err != nil {
 		fmt.Println(err)
 		return

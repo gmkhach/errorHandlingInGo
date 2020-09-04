@@ -1,0 +1,2 @@
+2020/09/03 22:36:54 Error: open thisFileDoesNotExist.txt: The system cannot find the file specified.
+2020/09/03 22:36:54 Fatal Error: open thisFileDoesNotExist.txt: The system cannot find the file specified. Exiting the program.
